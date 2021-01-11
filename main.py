@@ -1,8 +1,9 @@
 import os
 import requests
 import pandas as pd
-from citation import Citation
+from quote import Quote
 from bs4 import BeautifulSoup
+from shutil import copyfile
 # import openpyxl
 # from openpyxl import Workbook
 # from openpyxl.utils import get_column_letter
@@ -12,55 +13,55 @@ os.system('clear')
 
 r = requests.get("https://quotes.toscrape.com/")
 soup = BeautifulSoup(r.content, "html.parser")
-arr_citations = []
+arr_quotes = []  # tableau des citations + auteurs + tags
 
-################################## CITATIONS ##################################################
 
-print("-------- CITATIONS --------")
-citations = soup.find_all("span", attrs={"class": "text", "itemprop": "text"})
-for citation in citations:
-    print(citation.text)
-    citation = Citation(citation.text)
-    arr_citations.append(citation)
+################################## QUOTES ##################################################
+
+
+print("-------- QUOTES --------")
+quotes = soup.find_all("span", attrs={"class": "text", "itemprop": "text"})
+
+f = open("resultats/quotes.txt", "w")
+# instanciation de l'objet quote avec son attribut content
+# et enrgistrement du fichier dans resultats/quotes.txt
+for quote in quotes:
+    # print("quote_content:", quote.text)
+    f.write(quote.text + "\n")
+    quote_obj = Quote(quote.text)
+    arr_quotes.append(quote_obj)
+f.close()
+
 
 ################################## AUTHORS ##################################################
 
-# encoding='utf-8'
+
 print("-------- AUTHORS --------")
+authors = soup.find_all("small", attrs={"class": "author", "itemprop": "author"})
 
-
-def create_xls(authorsSet):
-    print("authorSet", authorsSet)
-    # wb = Workbook()
-    # dest_filename = 'authors_book.xlsx'
-    # ws1 = wb.active
-    # ws1.title = "authors"
-    # for row in range(1, 10):
-    # for row in range(1, len(authorsSet)):
-        # ws1.append(range(2))
-
-    # ws2 = wb.create_sheet(title="Pi")
-    # ws2['F5'] = 3.14
-
-    # wb.save(filename=dest_filename)
-    df = pd.DataFrame([authorsSet]).T
-    df.to_excel(excel_writer = "authors_book.xlsx", index=False, header=False, sheet_name='Authors')
-
-f = open("authors.txt", "w")
-authors = soup.find_all(
-    "small", attrs={"class": "author", "itemprop": "author"})
 i = 0
-authorsSet = []
+arr_authors = [] # tableau des auteurs
 for author in authors:
-    arr_citations[i].author = author.text
-    authorsSet.append(author.text)
+    arr_quotes[i].author = author.text
+    arr_authors.append(author.text)
     # print(author.text)
-    f.write(author.text + "\n")
     i += 1
+
+# élimination des doublons et tri alphabétique
+arr_authors = list(set(arr_authors))
+arr_authors.sort()
+print("arr_author", arr_authors)
+
+# enregistrement dans fichier authors.txt
+f = open("./authors/authors.txt", "w")
+for author in arr_authors:
+    f.write(author + "\n")
 f.close()
-authorsSet = list(set(authorsSet))
-authorsSet.sort()
-create_xls(authorsSet)
+
+# création du fichier xlsx
+df = pd.DataFrame([arr_authors]).T
+df.to_excel(excel_writer="authors_book.xlsx", index=False,
+            header=False, sheet_name='Authors')
 
 
 ################################## TAGS ##################################################
@@ -69,26 +70,24 @@ create_xls(authorsSet)
 print("-------- TAGS --------")
 tags = soup.find_all(
     "meta", attrs={"class": "keywords", "itemprop": "keywords"})
-# print(tags.text)
-
 
 # remplissage d'un tableau de tags
 arr_tags = []
-for tag in tags:
-    arr_tags.append(tag["content"])
+for tag in tags: arr_tags.append(tag["content"])
 
+# complétion du tableau d'objets quotes (ajout du tableau de tags de la citation)
 i = 0
 for tag in arr_tags:
-    arr_citations[i].tags = tag
+    arr_quotes[i].tags = tag
     i += 1
 
 # élimination des doublons et tri alphabétique
 tags = list(set(arr_tags))
 tags.sort()
-# print(tags)
+# print("tags:", tags)
 
-# impression dans fichier tags.txt
-f = open("tags.txt", "w")
+# enregistrement dans fichier tags.txt
+f = open("./tags/tags.txt", "w")
 for tag in tags:
     # print(tag)
     f.write(tag + "\n")
@@ -97,8 +96,11 @@ f.close()
 
 ################################## RESULTS ##################################################
 
-f = open("quotes.md", "w")
-for citation in arr_citations:
-    f.write("citation:" + citation.content + " -- Auteur:" +
-            citation.author + " -- Tags:" + citation.tags + "\n")
+
+# enregistrement des citations complètes dans fichier quotes.md
+f = open("./quotes/quotes.md", "w")
+for quote_obj in arr_quotes:
+    f.write("**Quote:**" + quote_obj.content + "\n" +
+            "Auteur:" + quote_obj.author + "\n" +
+            "Tags:" + quote_obj.tags + "\n\n")
 f.close()
