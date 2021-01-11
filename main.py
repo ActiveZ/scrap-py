@@ -1,6 +1,8 @@
 import requests
 from citation import Citation
 from bs4 import BeautifulSoup
+import openpyxl
+# import panda as pd
 
 
 r = requests.get("https://quotes.toscrape.com/")
@@ -61,4 +63,8 @@ f.close()
 
 ################################## RESULTS ##################################################
 
+f = open("quotes.md", "w")
+for citation in arr_citations: 
+    f.write("citation:" + citation.content + " -- Auteur:" + citation.author + " -- Tags:" + citation.tags + "\n")
+f.close()
 for citation in arr_citations: print("citation:", citation.content, "Auteur:", citation.author, "Tags:", citation.tags, "\n")
