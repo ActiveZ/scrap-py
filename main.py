@@ -1,9 +1,14 @@
+import os
 import requests
+import pandas as pd
 from citation import Citation
 from bs4 import BeautifulSoup
-import openpyxl
-# import panda as pd
+# import openpyxl
+from openpyxl import Workbook
+from openpyxl.utils import get_column_letter
 
+
+os.system('clear')
 
 r = requests.get("https://quotes.toscrape.com/")
 soup = BeautifulSoup(r.content, "html.parser")
@@ -12,36 +17,65 @@ arr_citations = []
 ################################## CITATIONS ##################################################
 
 print("-------- CITATIONS --------")
-citations = soup.find_all("span", attrs={"class":"text", "itemprop":"text"})
+citations = soup.find_all("span", attrs={"class": "text", "itemprop": "text"})
 for citation in citations:
-    print (citation.text)
+    print(citation.text)
     citation = Citation(citation.text)
     arr_citations.append(citation)
 
 ################################## AUTHORS ##################################################
 
+# encoding='utf-8'
 print("-------- AUTHORS --------")
+
+
+def create_xls(authorsSet):
+    print("authorSet", authorsSet)
+    wb = Workbook()
+    dest_filename = 'authors_book.xlsx'
+    ws1 = wb.active
+    ws1.title = "authors"
+    for row in range(1, 10):
+    # for row in range(1, len(authorsSet)):
+        ws1.append(range(2))
+
+    # ws2 = wb.create_sheet(title="Pi")
+    # ws2['F5'] = 3.14
+
+    # wb.save(filename=dest_filename)
+    df = pd.DataFrame([authorsSet]).T
+    df.to_excel(excel_writer = "test.xlsx")
+
 f = open("authors.txt", "w")
-authors = soup.find_all("small", attrs={"class":"author", "itemprop":"author"})
+authors = soup.find_all(
+    "small", attrs={"class": "author", "itemprop": "author"})
 i = 0
+authorsSet = []
 for author in authors:
     arr_citations[i].author = author.text
+    authorsSet.append(author.text)
     # print(author.text)
     f.write(author.text + "\n")
     i += 1
 f.close()
+authorsSet = list(set(authorsSet))
+authorsSet.sort()
+create_xls(authorsSet)
 
 
 ################################## TAGS ##################################################
 
+
 print("-------- TAGS --------")
-tags = soup.find_all("meta", attrs={"class":"keywords", "itemprop":"keywords"})
+tags = soup.find_all(
+    "meta", attrs={"class": "keywords", "itemprop": "keywords"})
 # print(tags.text)
 
 
 # remplissage d'un tableau de tags
 arr_tags = []
-for tag in tags: arr_tags.append(tag["content"])
+for tag in tags:
+    arr_tags.append(tag["content"])
 
 i = 0
 for tag in arr_tags:
@@ -64,7 +98,7 @@ f.close()
 ################################## RESULTS ##################################################
 
 f = open("quotes.md", "w")
-for citation in arr_citations: 
-    f.write("citation:" + citation.content + " -- Auteur:" + citation.author + " -- Tags:" + citation.tags + "\n")
+for citation in arr_citations:
+    f.write("citation:" + citation.content + " -- Auteur:" +
+            citation.author + " -- Tags:" + citation.tags + "\n")
 f.close()
-for citation in arr_citations: print("citation:", citation.content, "Auteur:", citation.author, "Tags:", citation.tags, "\n")
