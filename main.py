@@ -4,8 +4,8 @@ import pandas as pd
 from citation import Citation
 from bs4 import BeautifulSoup
 # import openpyxl
-from openpyxl import Workbook
-from openpyxl.utils import get_column_letter
+# from openpyxl import Workbook
+# from openpyxl.utils import get_column_letter
 
 
 os.system('clear')
@@ -31,20 +31,20 @@ print("-------- AUTHORS --------")
 
 def create_xls(authorsSet):
     print("authorSet", authorsSet)
-    wb = Workbook()
-    dest_filename = 'authors_book.xlsx'
-    ws1 = wb.active
-    ws1.title = "authors"
-    for row in range(1, 10):
+    # wb = Workbook()
+    # dest_filename = 'authors_book.xlsx'
+    # ws1 = wb.active
+    # ws1.title = "authors"
+    # for row in range(1, 10):
     # for row in range(1, len(authorsSet)):
-        ws1.append(range(2))
+        # ws1.append(range(2))
 
     # ws2 = wb.create_sheet(title="Pi")
     # ws2['F5'] = 3.14
 
     # wb.save(filename=dest_filename)
     df = pd.DataFrame([authorsSet]).T
-    df.to_excel(excel_writer = "test.xlsx")
+    df.to_excel(excel_writer = "authors_book.xlsx", index=False, header=False, sheet_name='Authors')
 
 f = open("authors.txt", "w")
 authors = soup.find_all(
