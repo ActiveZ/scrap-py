@@ -8,7 +8,8 @@ from shutil import copy
 
 os.system('clear')
 
-r = requests.get("https://quotes.toscrape.com/")
+URL = "https://quotes.toscrape.com"
+r = requests.get(URL)
 soup = BeautifulSoup(r.content, "html.parser")
 arr_quotes = []  # tableau des citations + auteurs + tags
 
@@ -110,3 +111,11 @@ for quote_obj in arr_quotes:
             "Auteur:" + quote_obj.author + "\n" +
             "Tags:" + quote_obj.tags + "\n\n")
 f.close()
+
+
+################################## PAGES ##################################################
+
+page = soup.find("li", attrs={"class": "next"})
+print("page:", page)
+link = page.find("a")
+print("href:",link.get('href'))
