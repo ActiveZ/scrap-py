@@ -3,7 +3,7 @@ from quote import Quote
 from shutil import copy
 
 
-################################## SCRAPPING ##################################################
+# --------------------------- SCRAPPING ------------------------------
 
 
 # récupération des objets quotes de chaque page
@@ -13,32 +13,30 @@ def get_quotes(arr_quotes, soup, address):
 
     quotes = soup.find_all("span", attrs={"class": "text", "itemprop": "text"})
     # instanciation de l'objet quote avec son attribut content
-    # et enregistrement du fichier dans resultats/quotes.txt
     for quote in quotes:
         quote_obj = Quote(quote.text)
         arr_quotes.append(quote_obj)
 
-
-    authors = soup.find_all("small", attrs={"class": "author", "itemprop": "author"})
+    authors = soup.find_all(
+        "small", attrs={"class": "author", "itemprop": "author"})
     i = nb_quotes
     for author in authors:
         arr_quotes[i].author = author.text
         i += 1
 
-
-    tags = soup.find_all("meta", attrs={"class": "keywords", "itemprop": "keywords"})
-    # complétion du tableau d'objets quotes (ajout du tableau de tags de la citation)
+    tags = soup.find_all(
+        "meta", attrs={"class": "keywords", "itemprop": "keywords"})
+    # complétion du tableau d'objets quotes (ajout du tableau de tags)
     i = nb_quotes
     for tag in tags:
         arr_quotes[i].tags = tag["content"].split(",")
         i += 1
 
-    print ("Scrapping terminé à l'adresse " + address)
+    print("Scrapping terminé à l'adresse " + address)
     return arr_quotes
 
 
-################################## QUOTES ##################################################
-
+# -------------------------- QUOTES --------------------------------------
 
 # enregistrement du fichier dans resultats/quotes.txt
 def print_quotes(arr_quotes):
@@ -49,7 +47,7 @@ def print_quotes(arr_quotes):
     print("Fichier quotes.txt enregistré")
 
 
-################################## AUTHORS ##################################################
+# -------------------------- AUTHORS --------------------------------------
 
 
 def print_authors(arr_quotes):
@@ -68,7 +66,7 @@ def print_authors(arr_quotes):
     f.close()
 
     # enregistrement du fichier dans resultats/quotes.txt
-    copy ("./authors/authors.txt", "./resultats")
+    copy("./authors/authors.txt", "./resultats")
 
     # création du fichier xlsx
     df = pd.DataFrame([arr_authors]).T
@@ -77,12 +75,12 @@ def print_authors(arr_quotes):
     print("fichier authors_books.xlsx enregistré")
 
 
-################################## TAGS ##################################################
+# ------------------------- TAGS ----------------------------------------
 
 
 def print_tags(arr_quotes):
-    list_tags = [] # liste des tags
-    for q in arr_quotes: 
+    list_tags = []  # liste des tags
+    for q in arr_quotes:
         list_tags.extend(q.tags)
 
     # élimination des doublons et tri alphabétique de la liste des tags
@@ -96,11 +94,11 @@ def print_tags(arr_quotes):
     f.close()
 
     # enregistrement du fichier dans resultats/quotes.txt
-    copy ("./tags/tags.txt", "./resultats")
-    print ("Fichier tag.txt enregistré")
+    copy("./tags/tags.txt", "./resultats")
+    print("Fichier tag.txt enregistré")
 
 
-################################## RESULTS ##################################################
+# ------------------------------ RESULTS -----------------------------------
 
 
 def print_results(arr_quotes):
@@ -111,4 +109,4 @@ def print_results(arr_quotes):
                 "Author: " + quote_obj.author + "\n" +
                 "Tags: " + ", ".join(quote_obj.tags) + "\n\n")
     f.close()
-    print ("Fichier quotes.md enregistré")
+    print("Fichier quotes.md enregistré")
