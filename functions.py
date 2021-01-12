@@ -104,9 +104,10 @@ def print_tags(arr_quotes):
 def print_results(arr_quotes):
     # enregistrement des citations complètes dans fichier quotes.md
     f = open("./quotes/quotes.md", "w", encoding="utf-8")
+    f.writelines(["|Quote|Author|Tags|\n", "|:---|:---:|---|\n"])
     for quote_obj in arr_quotes:
-        f.write("**Quote:**" + " " + quote_obj.content + "\n" +
-                "Author: " + quote_obj.author + "\n" +
-                "Tags: " + ", ".join(quote_obj.tags) + "\n\n")
+        f.writelines(["|" + quote_obj.content + "|" +
+                      quote_obj.author + "|" +
+                      ", ".join(quote_obj.tags) + "|\n"])
     f.close()
     print("Fichier quotes.md enregistré")
