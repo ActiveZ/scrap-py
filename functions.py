@@ -23,8 +23,6 @@ def get_quotes(arr_quotes, soup, address):
     i = nb_quotes
     for author in authors:
         arr_quotes[i].author = author.text
-        # arr_authors.append(author.text)
-        # print(author.text)
         i += 1
 
 
@@ -46,11 +44,10 @@ def get_quotes(arr_quotes, soup, address):
 def print_quotes(arr_quotes):
     f = open("resultats/quotes.txt", "w", encoding="utf-8")
     for q in arr_quotes:
-        # print("quote_content:", q.content)
         f.write(q.content + "\n")
-        # f.write(q.content + "\n", encoding='utf-8)
     f.close()
     print("Fichier quotes.txt enregistré")
+
 
 ################################## AUTHORS ##################################################
 
@@ -63,7 +60,6 @@ def print_authors(arr_quotes):
     # élimination des doublons et tri alphabétique
     arr_authors = list(set(arr_authors))
     arr_authors.sort()
-    # print("arr_author", arr_authors)
 
     # enregistrement dans fichier authors.txt
     f = open("./authors/authors.txt", "w", encoding="utf-8")
@@ -80,13 +76,13 @@ def print_authors(arr_quotes):
                 header=False, sheet_name='Authors')
     print("fichier authors_books.xlsx enregistré")
 
+
 ################################## TAGS ##################################################
 
 
 def print_tags(arr_quotes):
     list_tags = [] # liste des tags
     for q in arr_quotes: 
-        # print("tags:", q.tags)
         list_tags.extend(q.tags)
 
     # élimination des doublons et tri alphabétique de la liste des tags
@@ -96,7 +92,6 @@ def print_tags(arr_quotes):
     # enregistrement dans fichier tags.txt
     f = open("./tags/tags.txt", "w", encoding="utf-8")
     for tag in list_tags:
-        # print(tag)
         f.write(tag + "\n")
     f.close()
 
@@ -104,17 +99,16 @@ def print_tags(arr_quotes):
     copy ("./tags/tags.txt", "./resultats")
     print ("Fichier tag.txt enregistré")
 
-    ################################## RESULTS ##################################################
+
+################################## RESULTS ##################################################
 
 
 def print_results(arr_quotes):
     # enregistrement des citations complètes dans fichier quotes.md
     f = open("./quotes/quotes.md", "w", encoding="utf-8")
     for quote_obj in arr_quotes:
-        f.write("**Quote: **" + quote_obj.content + "\n" +
+        f.write("**Quote:**" + " " + quote_obj.content + "\n" +
                 "Author: " + quote_obj.author + "\n" +
                 "Tags: " + ", ".join(quote_obj.tags) + "\n\n")
-                # "Tags:" +  for tag in quote_obj.tags: tag + "\n")
-
     f.close()
     print ("Fichier quotes.md enregistré")
