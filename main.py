@@ -4,9 +4,6 @@ import pandas as pd
 from quote import Quote
 from bs4 import BeautifulSoup
 from shutil import copy
-# import openpyxl
-# from openpyxl import Workbook
-# from openpyxl.utils import get_column_letter
 
 
 os.system('clear')
@@ -50,7 +47,7 @@ for author in authors:
 # élimination des doublons et tri alphabétique
 arr_authors = list(set(arr_authors))
 arr_authors.sort()
-print("arr_author", arr_authors)
+# print("arr_author", arr_authors)
 
 # enregistrement dans fichier authors.txt
 f = open("./authors/authors.txt", "w")
@@ -91,7 +88,6 @@ for tag in arr_tags:
 # élimination des doublons et tri alphabétique de la liste des tags
 list_tags = list(set(list_tags))
 list_tags.sort()
-print("tags:", list_tags)
 
 # enregistrement dans fichier tags.txt
 f = open("./tags/tags.txt", "w")
@@ -99,6 +95,9 @@ for tag in list_tags:
     # print(tag)
     f.write(tag + "\n")
 f.close()
+
+# enregistrement du fichier dans resultats/quotes.txt
+copy ("./tags/tags.txt", "./resultats")
 
 
 ################################## RESULTS ##################################################
