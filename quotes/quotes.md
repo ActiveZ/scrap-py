@@ -1,40 +1,40 @@
-**Quote:**â€œThe world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.â€
-Auteur:Albert Einstein
-Tags:change,deep-thoughts,thinking,world
-
-**Quote:**â€œIt is our choices, Harry, that show what we truly are, far more than our abilities.â€
-Auteur:J.K. Rowling
-Tags:abilities,choices
-
-**Quote:**â€œThere are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.â€
-Auteur:Albert Einstein
-Tags:inspirational,life,live,miracle,miracles
-
-**Quote:**â€œThe person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.â€
-Auteur:Jane Austen
-Tags:aliteracy,books,classic,humor
-
-**Quote:**â€œImperfection is beauty, madness is genius and it's better to be absolutely ridiculous than absolutely boring.â€
+**Quote:**“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”
 Auteur:Marilyn Monroe
-Tags:be-yourself,inspirational
+Tags:friends,heartbreak,inspirational,life,love,sisters
 
-**Quote:**â€œTry not to become a man of success. Rather become a man of value.â€
+**Quote:**“It is our choices, Harry, that show what we truly are, far more than our abilities.”
+Auteur:J.K. Rowling
+Tags:courage,friends
+
+**Quote:**“There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.”
 Auteur:Albert Einstein
-Tags:adulthood,success,value
+Tags:simplicity,understand
 
-**Quote:**â€œIt is better to be hated for what you are than to be loved for what you are not.â€
-Auteur:AndrÃ© Gide
-Tags:life,love
+**Quote:**“The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.”
+Auteur:Bob Marley
+Tags:love
 
-**Quote:**â€œI have not failed. I've just found 10,000 ways that won't work.â€
-Auteur:Thomas A. Edison
-Tags:edison,failure,inspirational,paraphrased
+**Quote:**“Imperfection is beauty, madness is genius and it's better to be absolutely ridiculous than absolutely boring.”
+Auteur:Dr. Seuss
+Tags:fantasy
 
-**Quote:**â€œA woman is like a tea bag; you never know how strong it is until it's in hot water.â€
-Auteur:Eleanor Roosevelt
-Tags:misattributed-eleanor-roosevelt
+**Quote:**“Try not to become a man of success. Rather become a man of value.”
+Auteur:Douglas Adams
+Tags:life,navigation
 
-**Quote:**â€œA day without sunshine is like, you know, night.â€
-Auteur:Steve Martin
-Tags:humor,obvious,simile
+**Quote:**“It is better to be hated for what you are than to be loved for what you are not.”
+Auteur:Elie Wiesel
+Tags:activism,apathy,hate,indifference,inspirational,love,opposite,philosophy
+
+**Quote:**“I have not failed. I've just found 10,000 ways that won't work.”
+Auteur:Friedrich Nietzsche
+Tags:friendship,lack-of-friendship,lack-of-love,love,marriage,unhappy-marriage
+
+**Quote:**“A woman is like a tea bag; you never know how strong it is until it's in hot water.”
+Auteur:Mark Twain
+Tags:books,contentment,friends,friendship,life
+
+**Quote:**“A day without sunshine is like, you know, night.”
+Auteur:Allen Saunders
+Tags:fate,life,misattributed-john-lennon,planning,plans
 
