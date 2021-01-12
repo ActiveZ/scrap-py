@@ -3,7 +3,7 @@ import requests
 import pandas as pd
 from quote import Quote
 from bs4 import BeautifulSoup
-from shutil import copyfile
+from shutil import copy
 # import openpyxl
 # from openpyxl import Workbook
 # from openpyxl.utils import get_column_letter
@@ -24,7 +24,7 @@ quotes = soup.find_all("span", attrs={"class": "text", "itemprop": "text"})
 
 f = open("resultats/quotes.txt", "w")
 # instanciation de l'objet quote avec son attribut content
-# et enrgistrement du fichier dans resultats/quotes.txt
+# et enregistrement du fichier dans resultats/quotes.txt
 for quote in quotes:
     # print("quote_content:", quote.text)
     f.write(quote.text + "\n")
@@ -58,6 +58,9 @@ for author in arr_authors:
     f.write(author + "\n")
 f.close()
 
+# enregistrement du fichier dans resultats/quotes.txt
+copy ("./authors/authors.txt", "./resultats")
+
 # création du fichier xlsx
 df = pd.DataFrame([arr_authors]).T
 df.to_excel(excel_writer="authors_book.xlsx", index=False,
@@ -71,9 +74,12 @@ print("-------- TAGS --------")
 tags = soup.find_all(
     "meta", attrs={"class": "keywords", "itemprop": "keywords"})
 
-# remplissage d'un tableau de tags
-arr_tags = []
-for tag in tags: arr_tags.append(tag["content"])
+
+arr_tags = [] # tableau de tags à 2 dimensions
+list_tags = [] # liste des tags
+for tag in tags: 
+    arr_tags.append(tag["content"])
+    list_tags.extend(tag["content"].split(","))
 
 # complétion du tableau d'objets quotes (ajout du tableau de tags de la citation)
 i = 0
@@ -81,14 +87,15 @@ for tag in arr_tags:
     arr_quotes[i].tags = tag
     i += 1
 
-# élimination des doublons et tri alphabétique
-tags = list(set(arr_tags))
-tags.sort()
-# print("tags:", tags)
+
+# élimination des doublons et tri alphabétique de la liste des tags
+list_tags = list(set(list_tags))
+list_tags.sort()
+print("tags:", list_tags)
 
 # enregistrement dans fichier tags.txt
 f = open("./tags/tags.txt", "w")
-for tag in tags:
+for tag in list_tags:
     # print(tag)
     f.write(tag + "\n")
 f.close()
