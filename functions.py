@@ -1,6 +1,24 @@
+import requests
 import pandas as pd
+from bs4 import BeautifulSoup
 from quote import Quote
 from shutil import copy
+
+# -------------------------- AUTHOR INFOS --------------------------------------
+
+# récupération des infos de l'auteur sur la page spécifique (about)
+
+
+def get_author_infos(link):
+    url = "https://quotes.toscrape.com" + link.get('href')
+    r = requests.get(url)
+    soup = BeautifulSoup(r.content, "html.parser")
+    born_date = soup.find("span", attrs="author-born-date").text
+    born_location = soup.find("span", attrs="author-born-location").text
+    description = soup.find("div", attrs="author-description").text
+    return {"born_date": born_date,
+            "born_location": born_location,
+            "description": description}
 
 
 # --------------------------- SCRAPPING ------------------------------
@@ -21,7 +39,11 @@ def get_quotes(arr_quotes, soup, address):
         "small", attrs={"class": "author", "itemprop": "author"})
     i = nb_quotes
     for author in authors:
-        arr_quotes[i].author = author.text
+        author_infos = get_author_infos(author.find_next("a"))
+        arr_quotes[i].author["name"] = author.text
+        arr_quotes[i].author["born_date"] = author_infos["born_date"]
+        arr_quotes[i].author["born_location"] = author_infos["born_location"]
+        arr_quotes[i].author["description"] = author_infos["description"]
         i += 1
 
     tags = soup.find_all(
@@ -38,6 +60,7 @@ def get_quotes(arr_quotes, soup, address):
 
 # -------------------------- QUOTES --------------------------------------
 
+
 # enregistrement du fichier dans resultats/quotes.txt
 def print_quotes(arr_quotes):
     f = open("resultats/quotes.txt", "w", encoding="utf-8")
@@ -48,30 +71,34 @@ def print_quotes(arr_quotes):
 
 
 # -------------------------- AUTHORS --------------------------------------
-
-
 def print_authors(arr_quotes):
     arr_authors = []
     for q in arr_quotes:
-        arr_authors.append(q.author)
+        if(arr_authors.count(q.author) == 0):
+            arr_authors.append(q.author)
 
-    # élimination des doublons et tri alphabétique
-    arr_authors = list(set(arr_authors))
-    arr_authors.sort()
+    # tri de laliste des auteurs par ordre alphabétique de leur nom
+    arr_authors = sorted(arr_authors, key=lambda author: author["name"])
 
     # enregistrement dans fichier authors.txt
     f = open("./authors/authors.txt", "w", encoding="utf-8")
     for author in arr_authors:
-        f.write(author + "\n")
+        f.write(author["name"] + " -- born: " + author["born_date"] + " " +
+                author["born_location"] + "\n")
     f.close()
 
     # enregistrement du fichier dans resultats/quotes.txt
     copy("./authors/authors.txt", "./resultats")
 
     # création du fichier xlsx
-    df = pd.DataFrame([arr_authors]).T
+    data = {"name": [], "description": []}
+    for author in arr_authors:
+        data["name"].append(author["name"])
+        data["description"].append(author["description"])
+    df = pd.DataFrame({"NAMES": data["name"],
+                       "DESCRIPTIONS": data["description"]})
     df.to_excel(excel_writer="authors_book.xlsx", index=False,
-                header=False, sheet_name='Authors')
+                header=True, sheet_name='Authors')
     print("fichier authors_books.xlsx enregistré")
 
 
@@ -107,7 +134,7 @@ def print_results(arr_quotes):
     f.writelines(["|Quote|Author|Tags|\n", "|:---|:---:|---|\n"])
     for quote_obj in arr_quotes:
         f.writelines(["|" + quote_obj.content + "|" +
-                      quote_obj.author + "|" +
+                      quote_obj.author["name"] + "|" +
                       ", ".join(quote_obj.tags) + "|\n"])
     f.close()
     print("Fichier quotes.md enregistré")

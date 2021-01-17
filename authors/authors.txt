@@ -1,50 +1,50 @@
-Albert Einstein
-Alexandre Dumas fils
-Alfred Tennyson
-Allen Saunders
-André Gide
-Ayn Rand
-Bob Marley
-C.S. Lewis
-Charles Bukowski
-Charles M. Schulz
-Douglas Adams
-Dr. Seuss
-E.E. Cummings
-Eleanor Roosevelt
-Elie Wiesel
-Ernest Hemingway
-Friedrich Nietzsche
-Garrison Keillor
-George Bernard Shaw
-George Carlin
-George Eliot
-George R.R. Martin
-Harper Lee
-Haruki Murakami
-Helen Keller
-J.D. Salinger
-J.K. Rowling
-J.M. Barrie
-J.R.R. Tolkien
-James Baldwin
-Jane Austen
-Jim Henson
-Jimi Hendrix
-John Lennon
-Jorge Luis Borges
-Khaled Hosseini
-Madeleine L'Engle
-Marilyn Monroe
-Mark Twain
-Martin Luther King Jr.
-Mother Teresa
-Pablo Neruda
-Ralph Waldo Emerson
-Stephenie Meyer
-Steve Martin
-Suzanne Collins
-Terry Pratchett
-Thomas A. Edison
-W.C. Fields
-William Nicholson
+Albert Einstein -- born: March 14, 1879 in Ulm, Germany
+Alexandre Dumas fils -- born: July 27, 1824 in Paris, France
+Alfred Tennyson -- born: August 06, 1809 in Somersby, Lincolnshire, The United Kingdom
+Allen Saunders -- born: April 24, 1899 in The United States
+André Gide -- born: November 22, 1869 in Paris, France
+Ayn Rand -- born: February 02, 1905 in St. Petersburg, Russian Federation
+Bob Marley -- born: February 06, 1945 in Nine Mile, Saint Ann, Jamaica
+C.S. Lewis -- born: November 29, 1898 in Belfast, Ireland
+Charles Bukowski -- born: August 16, 1920 in Andernach, Germany
+Charles M. Schulz -- born: November 26, 1922 in Minneapolis, MN, The United States
+Douglas Adams -- born: March 11, 1952 in Cambridge, England, The United Kingdom
+Dr. Seuss -- born: March 02, 1904 in Springfield, MA, The United States
+E.E. Cummings -- born: October 14, 1894 in Cambridge, Massachusetts, The United States
+Eleanor Roosevelt -- born: October 11, 1884 in The United States
+Elie Wiesel -- born: September 30, 1928 in Sighet, Romania
+Ernest Hemingway -- born: July 21, 1899 in Oak Park, Illinois, The United States
+Friedrich Nietzsche -- born: October 15, 1844 in Röcken bei Lützen, Prussian Province of Saxony, Germany
+Garrison Keillor -- born: August 07, 1942 in Anoka, Minnesota, The United States
+George Bernard Shaw -- born: July 26, 1856 in Dublin, Ireland
+George Carlin -- born: May 12, 1937 in New York, New York, The United States
+George Eliot -- born: November 22, 1819 in South Farm, Arbury Hall, Nuneaton, Warwickshire, The United Kingdom
+George R.R. Martin -- born: September 20, 1948 in Bayonne, New Jersey, The United States
+Harper Lee -- born: April 28, 1926 in Monroeville, Alabama, The United States
+Haruki Murakami -- born: January 12, 1949 in Kyoto, Japan
+Helen Keller -- born: June 27, 1880 in Tuscumbia, Alabama, The United States
+J.D. Salinger -- born: January 01, 1919 in Manhattan, New York, The United States
+J.K. Rowling -- born: July 31, 1965 in Yate, South Gloucestershire, England, The United Kingdom
+J.M. Barrie -- born: May 09, 1860 in Kirriemuir, Angus, Scotland, The United Kingdom
+J.R.R. Tolkien -- born: January 03, 1892 in Bloemfontein, Mangaung, Free State, South Africa
+James Baldwin -- born: August 02, 1924 in Harlem, New York, The United States
+Jane Austen -- born: December 16, 1775 in Steventon Rectory, Hampshire, The United Kingdom
+Jim Henson -- born: September 24, 1936 in Greenville, Mississippi, The United States
+Jimi Hendrix -- born: November 27, 1942 in Seattle, Washington, The United States
+John Lennon -- born: October 09, 1940 in Liverpool, England, The United Kingdom
+Jorge Luis Borges -- born: August 24, 1899 in Buenos Aires, Argentina
+Khaled Hosseini -- born: March 04, 1965 in Kabul, Afghanistan
+Madeleine L'Engle -- born: November 29, 1918 in New York City, New York, The United States
+Marilyn Monroe -- born: June 01, 1926 in The United States
+Mark Twain -- born: November 30, 1835 in Florida, Missouri, The United States
+Martin Luther King Jr. -- born: January 15, 1929 in Atlanta, Georgia, The United States
+Mother Teresa -- born: August 26, 1910 in Skopje, Macedonia, the Former Yugoslav Republic of
+Pablo Neruda -- born: July 12, 1904 in Parral, Chile
+Ralph Waldo Emerson -- born: May 25, 1803 in Boston, Massachusetts, The United States
+Stephenie Meyer -- born: December 24, 1973 in Connecticut, The United States
+Steve Martin -- born: August 14, 1945 in Waco, Texas, The United States
+Suzanne Collins -- born: August 11, 1962 in Hartford, Connecticut, The United States
+Terry Pratchett -- born: April 28, 1948 in Beaconsfield, Buckinghamshire, England, The United Kingdom
+Thomas A. Edison -- born: February 11, 1847 in Milan, Ohio, The United States
+W.C. Fields -- born: January 29, 1880 in Darby, Pennsylvania, The United States
+William Nicholson -- born: January 12, 1948 in Lewes, Sussex, The United Kingdom

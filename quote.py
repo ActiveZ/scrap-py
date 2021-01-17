@@ -1,6 +1,11 @@
 class Quote:
-    def __init__(self, content = "", author = "", tags = []):
+    def __init__(self, content = "", author = {}, tags = []):
         self.content = content
-        self.author = author
         self.tags = tags
+        self.author = {
+            "name": "",
+            "born_date": "",
+            "born_location": "",
+            "description": ""
+        }
 

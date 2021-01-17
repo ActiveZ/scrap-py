@@ -6,6 +6,8 @@ from bs4 import BeautifulSoup
 
 
 os.system('cls')  # attention, sur ubuntu, remplacer par os.system('clear')
+os.system('clear')  # attention, sur windows, remplacer par os.system('cls')
+
 print("Scrapper lancé...")
 
 arr_quotes = []  # tableau des citations + auteurs + tags
@@ -34,4 +36,4 @@ print_results(arr_quotes)
 
 # affichage des résultats
 for q in arr_quotes:
-    print(q.content, q.author, q.tags)
+    print(q.content, q.author, q.tags, "\n")
